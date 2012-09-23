@@ -31,7 +31,7 @@
     if([self.visited containsObject:photo_id])
         return;
     
-    if([self.photos count] < 5) {
+    if([self.photos count] < 15) {
         [self.photos addObject:photo];
         [self.visited addObject:photo_id];
     } else {

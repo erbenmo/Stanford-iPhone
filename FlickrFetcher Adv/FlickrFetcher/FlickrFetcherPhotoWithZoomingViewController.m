@@ -13,12 +13,14 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) NSDictionary* pic;
+@property (nonatomic, strong)UIActivityIndicatorView* spinner;
 @end
 
 @implementation FlickrFetcherPhotoWithZoomingViewController
 @synthesize scrollView = _scrollView;
 @synthesize imageView = _imageView;
 @synthesize pic = _pic;
+@synthesize spinner = _spinner;
 
 - (void) setPic:(NSDictionary *)pic {
     _pic = pic;
@@ -44,17 +46,33 @@
     
     self.scrollView.delegate = self;
     
-    NSURL* urlForPhotot = [FlickrFetcher urlForPhoto:self.pic format:FlickrPhotoFormatLarge];
-    NSData* data = [[NSData alloc] initWithContentsOfURL:urlForPhotot];
-    UIImage* picture = [UIImage imageWithData:data];
+    self.spinner = [[UIActivityIndicatorView alloc]
+                    initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
+    [self.spinner startAnimating];
     
-    [self.imageView setImage:picture];
+    dispatch_queue_t downloadQ = dispatch_queue_create("download pic", NULL);
+    dispatch_async(downloadQ, ^{
+        
+        // cache start
+        NSURL* urlForPhotot = [FlickrFetcher urlForPhoto:self.pic format:FlickrPhotoFormatLarge];
+        NSData* data = [[NSData alloc] initWithContentsOfURL:urlForPhotot];
+        // cache end
+        [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
+        
+        UIImage* picture = [UIImage imageWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imageView setImage:picture];
+            
+            self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
+            self.scrollView.contentSize = self.imageView.bounds.size;
+            
+            [self.imageView setNeedsDisplay];
+            [self.spinner stopAnimating];
+        });
+    });
     
-    self.imageView.frame = CGRectMake(0, 0, self.imageView.image.size.width, self.imageView.image.size.height);
-    self.scrollView.contentSize = self.imageView.bounds.size;
-    
-    
-    [self.imageView setNeedsDisplay];
+    dispatch_release(downloadQ);
 }
 
 - (void)viewDidUnload

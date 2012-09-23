@@ -13,11 +13,13 @@
 @interface FlickrFetcherTopPlacesViewController ()
 @property (nonatomic, strong) NSMutableArray* cities;
 @property (nonatomic, strong) NSArray* picsInPlace;
+@property (nonatomic, strong) UIActivityIndicatorView* spinner;
 @end
 
 @implementation FlickrFetcherTopPlacesViewController
 @synthesize cities = _cities;
 @synthesize picsInPlace = _picsInPlace;
+@synthesize spinner = _spinner;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,13 +35,25 @@
     [super viewDidLoad];
 
     self.cities = [NSMutableArray array];
-    NSArray* places = [[FlickrFetcher topPlaces] copy];
     
-    for (NSDictionary* place in places) {
-        [self.cities addObject:place];
-    }
+    self.spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
-    [self.tableView reloadData];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.spinner];
+    [self.spinner startAnimating];
+    
+    dispatch_queue_t downloadQueue = dispatch_queue_create("flickr top places", NULL);
+    dispatch_async(downloadQueue, ^{
+        NSArray* places = [[FlickrFetcher topPlaces] copy]; // dispatch
+        dispatch_async(dispatch_get_main_queue(), ^{
+            for (NSDictionary* place in places)
+                [self.cities addObject:place];
+            [self.tableView reloadData];
+            [self.spinner stopAnimating];
+        });
+    });
+    
+    dispatch_release(downloadQueue);
 }
 
 - (void)viewDidUnload
@@ -85,52 +99,21 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - FlickrFetcherTopPlacesViewControllerDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.picsInPlace = [[FlickrFetcher photosInPlace:[self.cities objectAtIndex:indexPath.row] maxResults:50] copy];
-    
-    [self performSegueWithIdentifier:@"getPicInPlace" sender:self];
+    // dispatch
+    dispatch_queue_t downloadQ = dispatch_queue_create("flickr photo in place", NULL);
+    [self.spinner startAnimating];
+
+    dispatch_async(downloadQ, ^{
+        self.picsInPlace = [[FlickrFetcher photosInPlace:[self.cities objectAtIndex:indexPath.row] maxResults:50] copy];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"getPicInPlace" sender:self];
+            [self.spinner stopAnimating];
+        });
+    });
 }
 
 @end

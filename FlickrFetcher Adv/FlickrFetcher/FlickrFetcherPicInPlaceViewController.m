@@ -114,7 +114,6 @@
     [recentsTab setRecentPhoto:self.picSelected];
     
     [self performSegueWithIdentifier:@"showPic" sender:self];
-    NSLog(@"done");
 }
 
 @end

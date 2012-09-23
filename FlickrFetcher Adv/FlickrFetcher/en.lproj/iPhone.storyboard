@@ -110,7 +110,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Top Places" id="tQh-zI-VnN"/>
-                    <navigationItem key="navigationItem" id="8jQ-sn-sHk"/>
+                    <navigationItem key="navigationItem" id="8jQ-sn-sHk">
+                        <barButtonItem key="rightBarButtonItem" title="loading" id="IpG-Tp-Fea"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="IMg-uN-d0z" kind="push" identifier="getPicInPlace" id="mbw-bD-E88"/>
                     </connections>
@@ -189,7 +191,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ywU-u4-5uo"/>
+                    <navigationItem key="navigationItem" id="ywU-u4-5uo">
+                        <barButtonItem key="rightBarButtonItem" title="loading" id="Ouj-m4-j3d"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="vZz-8u-LlL" id="UXY-3d-PTh"/>
                         <outlet property="scrollView" destination="qsi-UW-AP5" id="coS-0i-s5j"/>

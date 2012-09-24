@@ -9,8 +9,10 @@
 #import "FlickrFetcherPicInPlaceViewController.h"
 #import "FlickrFetcherRecentsViewController.h"
 #import "FlickrFetcherPhotoWithZoomingViewController.h"
+#import "MapViewController.h"
+#import "FlickrAnnotation.h"
 
-@interface FlickrFetcherPicInPlaceViewController ()
+@interface FlickrFetcherPicInPlaceViewController () <MapViewControllerDelegate>
 @property (nonatomic, strong) NSArray* pics;
 @property (nonatomic, strong) NSDictionary* picSelected;
 @end
@@ -18,6 +20,14 @@
 @implementation FlickrFetcherPicInPlaceViewController
 @synthesize pics = _pics;
 @synthesize picSelected;
+
+- (UIImage*)mapViewController:(MapViewController *)sender imageForAnnotation:(id<MKAnnotation>)annotation {
+    FlickrAnnotation* ann = (FlickrAnnotation*) annotation;
+    
+    NSURL *url = [FlickrFetcher urlForPhoto:ann.photo format:FlickrPhotoFormatSquare];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    return data ? [UIImage imageWithData:data] : nil;
+}
 
 - (void) setPics:(NSArray *)pics {
     _pics = [pics copy];
@@ -56,9 +66,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (NSMutableArray*) getAnnotations {
+    NSMutableArray* annotations = [NSMutableArray arrayWithCapacity:[self.pics count]];
+    
+    for (NSDictionary* pic in self.pics) {
+        [annotations addObject:[FlickrAnnotation annotationForPhoto:pic]];
+    }
+    
+    return annotations;
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"showPic"]) {
         [segue.destinationViewController setPic:self.picSelected];
+    } else if([segue.identifier isEqualToString:@"toMap"]) {
+        [segue.destinationViewController setAnnotations:[self getAnnotations]];
+        [segue.destinationViewController setDelegate:self];
     }
 }
 

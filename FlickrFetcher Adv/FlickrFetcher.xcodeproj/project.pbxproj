@@ -20,6 +20,10 @@
 		0E970CFD16059524001BCF99 /* FlickrFetcherTopPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E970CFC16059524001BCF99 /* FlickrFetcherTopPlacesViewController.m */; };
 		0EBB641A16097C540074E77A /* FlickrFetcherRecentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EBB641916097C540074E77A /* FlickrFetcherRecentsViewController.m */; };
 		0EE12567160FA91E005441AA /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE12566160FA91E005441AA /* ImageCache.m */; };
+		0EE12578160FEED5005441AA /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE12577160FEED5005441AA /* MapViewController.m */; };
+		0EE1257A160FEF6D005441AA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE12579160FEF6D005441AA /* MapKit.framework */; };
+		0EE1257C160FEF9F005441AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EE1257B160FEF9F005441AA /* CoreLocation.framework */; };
+		0EE1257F160FEFF5005441AA /* FlickrAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EE1257E160FEFF5005441AA /* FlickrAnnotation.m */; };
 		0EEDB7BF16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0EEDB7BE16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.m */; };
 		0EEDB7C216064D17002486EC /* Giants.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0EEDB7C116064D17002486EC /* Giants.jpg */; };
 /* End PBXBuildFile section */
@@ -48,6 +52,12 @@
 		0EBB641916097C540074E77A /* FlickrFetcherRecentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherRecentsViewController.m; sourceTree = "<group>"; };
 		0EE12565160FA91E005441AA /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
 		0EE12566160FA91E005441AA /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCache.m; sourceTree = "<group>"; };
+		0EE12576160FEED5005441AA /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		0EE12577160FEED5005441AA /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		0EE12579160FEF6D005441AA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0EE1257B160FEF9F005441AA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0EE1257D160FEFF5005441AA /* FlickrAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAnnotation.h; sourceTree = "<group>"; };
+		0EE1257E160FEFF5005441AA /* FlickrAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAnnotation.m; sourceTree = "<group>"; };
 		0EEDB7BD16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcherPhotoWithZoomingViewController.h; sourceTree = "<group>"; };
 		0EEDB7BE16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcherPhotoWithZoomingViewController.m; sourceTree = "<group>"; };
 		0EEDB7C116064D17002486EC /* Giants.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Giants.jpg; sourceTree = "<group>"; };
@@ -58,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EE1257C160FEF9F005441AA /* CoreLocation.framework in Frameworks */,
+				0EE1257A160FEF6D005441AA /* MapKit.framework in Frameworks */,
 				0E970CD816058CB3001BCF99 /* UIKit.framework in Frameworks */,
 				0E970CDA16058CB3001BCF99 /* Foundation.framework in Frameworks */,
 				0E970CDC16058CB3001BCF99 /* CoreGraphics.framework in Frameworks */,
@@ -70,6 +82,8 @@
 		0E970CC816058CB3001BCF99 = {
 			isa = PBXGroup;
 			children = (
+				0EE1257B160FEF9F005441AA /* CoreLocation.framework */,
+				0EE12579160FEF6D005441AA /* MapKit.framework */,
 				0E970CDD16058CB3001BCF99 /* FlickrFetcher */,
 				0E970CD616058CB3001BCF99 /* Frameworks */,
 				0E970CD416058CB3001BCF99 /* Products */,
@@ -107,6 +121,7 @@
 				0EEDB7BE16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.m */,
 				0EE12565160FA91E005441AA /* ImageCache.h */,
 				0EE12566160FA91E005441AA /* ImageCache.m */,
+				0EE12575160FEEAD005441AA /* Map */,
 				0EE12568160FA934005441AA /* Recents */,
 				0EE12557160F94F0005441AA /* Flickr */,
 				0E970CDE16058CB3001BCF99 /* Supporting Files */,
@@ -145,6 +160,17 @@
 				0EBB641916097C540074E77A /* FlickrFetcherRecentsViewController.m */,
 			);
 			name = Recents;
+			sourceTree = "<group>";
+		};
+		0EE12575160FEEAD005441AA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0EE12576160FEED5005441AA /* MapViewController.h */,
+				0EE12577160FEED5005441AA /* MapViewController.m */,
+				0EE1257D160FEFF5005441AA /* FlickrAnnotation.h */,
+				0EE1257E160FEFF5005441AA /* FlickrAnnotation.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +247,8 @@
 				0EEDB7BF16063EAB002486EC /* FlickrFetcherPhotoWithZoomingViewController.m in Sources */,
 				0EBB641A16097C540074E77A /* FlickrFetcherRecentsViewController.m in Sources */,
 				0EE12567160FA91E005441AA /* ImageCache.m in Sources */,
+				0EE12578160FEED5005441AA /* MapViewController.m in Sources */,
+				0EE1257F160FEFF5005441AA /* FlickrAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

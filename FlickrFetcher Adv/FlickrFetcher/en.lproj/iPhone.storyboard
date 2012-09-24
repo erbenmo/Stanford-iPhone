@@ -68,6 +68,30 @@
             </objects>
             <point key="canvasLocation" x="-1632" y="95"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="HJA-d3-8FJ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jgE-Mu-SVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="UyG-R6-WJq" customClass="MapViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bI5-Wu-OX1">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="VpA-RK-0m4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yB8-e8-Ygq"/>
+                    <connections>
+                        <outlet property="mapView" destination="VpA-RK-0m4" id="2zE-AL-Yni"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-628" y="76"/>
+        </scene>
         <!--Flickr Fetcher Top Places View Controller - Top Places-->
         <scene sceneID="lC3-kd-d1U">
             <objects>
@@ -161,7 +185,13 @@
                             <outlet property="delegate" destination="IMg-uN-d0z" id="ItB-wf-0cU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="KD4-Dc-VQr"/>
+                    <navigationItem key="navigationItem" id="KD4-Dc-VQr">
+                        <barButtonItem key="rightBarButtonItem" title="MAP" id="QqN-Z1-5Lp">
+                            <connections>
+                                <segue destination="UyG-R6-WJq" kind="push" identifier="toMap" id="fRQ-o0-FQ5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="FlD-vs-gb2" kind="push" identifier="showPic" id="j4i-Tz-sTK"/>
                     </connections>
@@ -200,7 +230,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-628" y="-546"/>
+            <point key="canvasLocation" x="-640" y="-623"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7EF-jH-nkd">
@@ -222,6 +252,30 @@
             <point key="canvasLocation" x="-2703" y="-214"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="FlickrFetcherPhotoWithZoomingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrFetcherPhotoWithZoomingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="FlickrFetcherPicInPlaceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrFetcherPicInPlaceViewController.h"/>
+        </class>
+        <class className="FlickrFetcherRecentsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrFetcherRecentsViewController.h"/>
+        </class>
+        <class className="FlickrFetcherTopPlacesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FlickrFetcherTopPlacesViewController.h"/>
+        </class>
+        <class className="MapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

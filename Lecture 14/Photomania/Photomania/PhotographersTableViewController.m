@@ -74,6 +74,7 @@
         // exists on disk, but we need to open it
         [self.photoDatabase openWithCompletionHandler:^(BOOL success) {
             [self setupFetchedResultsController];
+            [self fetchFlickrDataIntoDocument:self.photoDatabase];
         }];
     } else if (self.photoDatabase.documentState == UIDocumentStateNormal) {
         // already open and ready to use

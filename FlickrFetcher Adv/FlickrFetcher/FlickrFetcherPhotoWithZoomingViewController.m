@@ -8,12 +8,14 @@
 
 #import "FlickrFetcherPhotoWithZoomingViewController.h"
 #import "FlickrFetcher.h"
+#import "ImageCache.h"
 
 @interface FlickrFetcherPhotoWithZoomingViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) NSDictionary* pic;
-@property (nonatomic, strong)UIActivityIndicatorView* spinner;
+@property (nonatomic, strong) UIActivityIndicatorView* spinner;
+@property (nonatomic, strong) ImageCache* cache;
 @end
 
 @implementation FlickrFetcherPhotoWithZoomingViewController
@@ -21,6 +23,7 @@
 @synthesize imageView = _imageView;
 @synthesize pic = _pic;
 @synthesize spinner = _spinner;
+@synthesize cache = _cache;
 
 - (void) setPic:(NSDictionary *)pic {
     _pic = pic;
@@ -29,6 +32,13 @@
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     return self.imageView;
+}
+
+- (ImageCache*) cache {
+    if(!_cache) {
+        _cache = [[ImageCache alloc] init];
+    }
+    return _cache;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,11 +64,17 @@
     dispatch_queue_t downloadQ = dispatch_queue_create("download pic", NULL);
     dispatch_async(downloadQ, ^{
         
-        // cache start
-        NSURL* urlForPhotot = [FlickrFetcher urlForPhoto:self.pic format:FlickrPhotoFormatLarge];
-        NSData* data = [[NSData alloc] initWithContentsOfURL:urlForPhotot];
-        // cache end
-        [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
+        // check cache first
+        NSData* data;
+        BOOL hit = [self.cache hitCache:self.pic];
+        if(!hit) {
+            [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]];
+            NSURL* urlForPhotot = [FlickrFetcher urlForPhoto:self.pic format:FlickrPhotoFormatLarge];
+            data = [[NSData alloc] initWithContentsOfURL:urlForPhotot];
+            [self.cache addImageToCache:self.pic withData:data];
+        } else {
+            data = [self.cache getPixelsFromCache:self.pic];
+        }
         
         UIImage* picture = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{

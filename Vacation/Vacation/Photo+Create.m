@@ -33,13 +33,10 @@
         photo.subtitle = [flickrInfo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
         photo.url = [[FlickrFetcher urlForPhoto:flickrInfo format:FlickrPhotoFormatLarge] absoluteString];
         photo.whoTook = [Photographer photographerWithName:[flickrInfo objectForKey:FLICKR_PHOTO_OWNER] inManagedObjectContext:context];
-        
-        NSMutableSet* tags = [NSMutableSet set];
         for (NSString* tagString in [flickrInfo objectForKey:FLICKR_TAGS]) {
             Tag* tag = [Tag tagWithName:tagString inManagedObjectContext:context];
-            [tags addObject:tag];
+            [photo addTagsObject:tag];
         }
-        photo.tags = [tags copy];
     } else {
         photo = [matches lastObject];
     }

@@ -21,6 +21,10 @@
 		0E76089A16117F6A004BA65C /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089916117F6A004BA65C /* Photo+Create.m */; };
 		0E76089D16117F84004BA65C /* Photographer+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089C16117F84004BA65C /* Photographer+Create.m */; };
 		0E7608A016117F90004BA65C /* Tag+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089F16117F90004BA65C /* Tag+Create.m */; };
+		0E7608CB16118EB0004BA65C /* Place+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7608CA16118EB0004BA65C /* Place+Create.m */; };
+		0E7608CE16118EC1004BA65C /* Vacation+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7608CD16118EC1004BA65C /* Vacation+Create.m */; };
+		0E7608D9161192B7004BA65C /* Vacation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7608D8161192B7004BA65C /* Vacation.m */; };
+		0E7608DC161192B8004BA65C /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E7608DB161192B8004BA65C /* Place.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,14 @@
 		0E76089C16117F84004BA65C /* Photographer+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photographer+Create.m"; sourceTree = "<group>"; };
 		0E76089E16117F90004BA65C /* Tag+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+Create.h"; sourceTree = "<group>"; };
 		0E76089F16117F90004BA65C /* Tag+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+Create.m"; sourceTree = "<group>"; };
+		0E7608C916118EB0004BA65C /* Place+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Place+Create.h"; sourceTree = "<group>"; };
+		0E7608CA16118EB0004BA65C /* Place+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+Create.m"; sourceTree = "<group>"; };
+		0E7608CC16118EC1004BA65C /* Vacation+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Vacation+Create.h"; sourceTree = "<group>"; };
+		0E7608CD16118EC1004BA65C /* Vacation+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Vacation+Create.m"; sourceTree = "<group>"; };
+		0E7608D7161192B7004BA65C /* Vacation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vacation.h; sourceTree = "<group>"; };
+		0E7608D8161192B7004BA65C /* Vacation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vacation.m; sourceTree = "<group>"; };
+		0E7608DA161192B8004BA65C /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		0E7608DB161192B8004BA65C /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,23 +145,47 @@
 		0E7608791611750A004BA65C /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				0E7608831611787A004BA65C /* Vacation.xcdatamodeld */,
+				0E7608D016118ECA004BA65C /* Model */,
+				0E7608CF16118EC4004BA65C /* Factory */,
 				0E76087A16117517004BA65C /* CoreDataTableViewController.h */,
 				0E76087B16117517004BA65C /* CoreDataTableViewController.m */,
-				0E7608831611787A004BA65C /* Vacation.xcdatamodeld */,
-				0E76089516117F37004BA65C /* Photo.h */,
-				0E76089616117F37004BA65C /* Photo.m */,
-				0E76089216117F36004BA65C /* Tag.h */,
-				0E76089316117F36004BA65C /* Tag.m */,
-				0E76088C16117EC7004BA65C /* Photographer.h */,
-				0E76088D16117EC7004BA65C /* Photographer.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		0E7608CF16118EC4004BA65C /* Factory */ = {
+			isa = PBXGroup;
+			children = (
 				0E76089816117F6A004BA65C /* Photo+Create.h */,
 				0E76089916117F6A004BA65C /* Photo+Create.m */,
 				0E76089B16117F84004BA65C /* Photographer+Create.h */,
 				0E76089C16117F84004BA65C /* Photographer+Create.m */,
 				0E76089E16117F90004BA65C /* Tag+Create.h */,
 				0E76089F16117F90004BA65C /* Tag+Create.m */,
+				0E7608C916118EB0004BA65C /* Place+Create.h */,
+				0E7608CA16118EB0004BA65C /* Place+Create.m */,
+				0E7608CC16118EC1004BA65C /* Vacation+Create.h */,
+				0E7608CD16118EC1004BA65C /* Vacation+Create.m */,
 			);
-			name = "Core Data";
+			name = Factory;
+			sourceTree = "<group>";
+		};
+		0E7608D016118ECA004BA65C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0E76089516117F37004BA65C /* Photo.h */,
+				0E76089616117F37004BA65C /* Photo.m */,
+				0E76089216117F36004BA65C /* Tag.h */,
+				0E76089316117F36004BA65C /* Tag.m */,
+				0E76088C16117EC7004BA65C /* Photographer.h */,
+				0E76088D16117EC7004BA65C /* Photographer.m */,
+				0E7608DA161192B8004BA65C /* Place.h */,
+				0E7608DB161192B8004BA65C /* Place.m */,
+				0E7608D7161192B7004BA65C /* Vacation.h */,
+				0E7608D8161192B7004BA65C /* Vacation.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +261,10 @@
 				0E76089A16117F6A004BA65C /* Photo+Create.m in Sources */,
 				0E76089D16117F84004BA65C /* Photographer+Create.m in Sources */,
 				0E7608A016117F90004BA65C /* Tag+Create.m in Sources */,
+				0E7608CB16118EB0004BA65C /* Place+Create.m in Sources */,
+				0E7608CE16118EC1004BA65C /* Vacation+Create.m in Sources */,
+				0E7608D9161192B7004BA65C /* Vacation.m in Sources */,
+				0E7608DC161192B8004BA65C /* Place.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +380,7 @@
 				0E760874161174CF004BA65C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

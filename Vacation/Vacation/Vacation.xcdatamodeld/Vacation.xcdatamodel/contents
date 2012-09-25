@@ -12,13 +12,23 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="whoTook" inverseEntity="Photo" syncable="YES"/>
     </entity>
+    <entity name="Place" representedClassName="Place" syncable="YES">
+        <attribute name="placeId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="vacations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vacation" inverseName="places" inverseEntity="Vacation" syncable="YES"/>
+    </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="tags" inverseEntity="Photo" syncable="YES"/>
     </entity>
+    <entity name="Vacation" representedClassName="Vacation" syncable="YES">
+        <attribute name="vacationId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="vacations" inverseEntity="Place" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Photographer" positionX="-513" positionY="263" width="128" height="73"/>
-        <element name="Photo" positionX="-342" positionY="-153" width="128" height="133"/>
-        <element name="Tag" positionX="-92" positionY="272" width="128" height="73"/>
+        <element name="Photo" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Photographer" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Place" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Tag" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Vacation" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E760859161174CF004BA65C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E760858161174CF004BA65C /* UIKit.framework */; };
+		0E76085B161174CF004BA65C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76085A161174CF004BA65C /* Foundation.framework */; };
+		0E76085D161174CF004BA65C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76085C161174CF004BA65C /* CoreGraphics.framework */; };
+		0E760863161174CF004BA65C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E760861161174CF004BA65C /* InfoPlist.strings */; };
+		0E760865161174CF004BA65C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E760864161174CF004BA65C /* main.m */; };
+		0E760869161174CF004BA65C /* VacationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E760868161174CF004BA65C /* VacationAppDelegate.m */; };
+		0E76086C161174CF004BA65C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E76086A161174CF004BA65C /* MainStoryboard.storyboard */; };
+		0E7608851611787A004BA65C /* Vacation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E7608831611787A004BA65C /* Vacation.xcdatamodeld */; };
+		0E76088E16117EC8004BA65C /* Photographer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76088D16117EC7004BA65C /* Photographer.m */; };
+		0E76089416117F37004BA65C /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089316117F36004BA65C /* Tag.m */; };
+		0E76089716117F37004BA65C /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089616117F37004BA65C /* Photo.m */; };
+		0E76089A16117F6A004BA65C /* Photo+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089916117F6A004BA65C /* Photo+Create.m */; };
+		0E76089D16117F84004BA65C /* Photographer+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089C16117F84004BA65C /* Photographer+Create.m */; };
+		0E7608A016117F90004BA65C /* Tag+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E76089F16117F90004BA65C /* Tag+Create.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E760854161174CF004BA65C /* Vacation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vacation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E760858161174CF004BA65C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0E76085A161174CF004BA65C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0E76085C161174CF004BA65C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0E760860161174CF004BA65C /* Vacation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Vacation-Info.plist"; sourceTree = "<group>"; };
+		0E760862161174CF004BA65C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0E760864161174CF004BA65C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0E760866161174CF004BA65C /* Vacation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Vacation-Prefix.pch"; sourceTree = "<group>"; };
+		0E760867161174CF004BA65C /* VacationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VacationAppDelegate.h; sourceTree = "<group>"; };
+		0E760868161174CF004BA65C /* VacationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VacationAppDelegate.m; sourceTree = "<group>"; };
+		0E76086B161174CF004BA65C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		0E76087616117507004BA65C /* FlickrAPIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		0E76087716117507004BA65C /* FlickrFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		0E76087816117507004BA65C /* FlickrFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		0E76087A16117517004BA65C /* CoreDataTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		0E76087B16117517004BA65C /* CoreDataTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		0E7608841611787A004BA65C /* Vacation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vacation.xcdatamodel; sourceTree = "<group>"; };
+		0E76088C16117EC7004BA65C /* Photographer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photographer.h; sourceTree = "<group>"; };
+		0E76088D16117EC7004BA65C /* Photographer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photographer.m; sourceTree = "<group>"; };
+		0E76089216117F36004BA65C /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		0E76089316117F36004BA65C /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		0E76089516117F37004BA65C /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		0E76089616117F37004BA65C /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		0E76089816117F6A004BA65C /* Photo+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photo+Create.h"; sourceTree = "<group>"; };
+		0E76089916117F6A004BA65C /* Photo+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photo+Create.m"; sourceTree = "<group>"; };
+		0E76089B16117F84004BA65C /* Photographer+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Photographer+Create.h"; sourceTree = "<group>"; };
+		0E76089C16117F84004BA65C /* Photographer+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Photographer+Create.m"; sourceTree = "<group>"; };
+		0E76089E16117F90004BA65C /* Tag+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+Create.h"; sourceTree = "<group>"; };
+		0E76089F16117F90004BA65C /* Tag+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+Create.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E760851161174CF004BA65C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E760859161174CF004BA65C /* UIKit.framework in Frameworks */,
+				0E76085B161174CF004BA65C /* Foundation.framework in Frameworks */,
+				0E76085D161174CF004BA65C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E760849161174CF004BA65C = {
+			isa = PBXGroup;
+			children = (
+				0E76085E161174CF004BA65C /* Vacation */,
+				0E760857161174CF004BA65C /* Frameworks */,
+				0E760855161174CF004BA65C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E760855161174CF004BA65C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E760854161174CF004BA65C /* Vacation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E760857161174CF004BA65C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E760858161174CF004BA65C /* UIKit.framework */,
+				0E76085A161174CF004BA65C /* Foundation.framework */,
+				0E76085C161174CF004BA65C /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0E76085E161174CF004BA65C /* Vacation */ = {
+			isa = PBXGroup;
+			children = (
+				0E76086A161174CF004BA65C /* MainStoryboard.storyboard */,
+				0E760875161174E9004BA65C /* Flickr */,
+				0E7608791611750A004BA65C /* Core Data */,
+				0E76085F161174CF004BA65C /* Supporting Files */,
+			);
+			path = Vacation;
+			sourceTree = "<group>";
+		};
+		0E76085F161174CF004BA65C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E760867161174CF004BA65C /* VacationAppDelegate.h */,
+				0E760868161174CF004BA65C /* VacationAppDelegate.m */,
+				0E760860161174CF004BA65C /* Vacation-Info.plist */,
+				0E760861161174CF004BA65C /* InfoPlist.strings */,
+				0E760864161174CF004BA65C /* main.m */,
+				0E760866161174CF004BA65C /* Vacation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0E760875161174E9004BA65C /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				0E76087616117507004BA65C /* FlickrAPIKey.h */,
+				0E76087716117507004BA65C /* FlickrFetcher.h */,
+				0E76087816117507004BA65C /* FlickrFetcher.m */,
+			);
+			name = Flickr;
+			sourceTree = "<group>";
+		};
+		0E7608791611750A004BA65C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				0E76087A16117517004BA65C /* CoreDataTableViewController.h */,
+				0E76087B16117517004BA65C /* CoreDataTableViewController.m */,
+				0E7608831611787A004BA65C /* Vacation.xcdatamodeld */,
+				0E76089516117F37004BA65C /* Photo.h */,
+				0E76089616117F37004BA65C /* Photo.m */,
+				0E76089216117F36004BA65C /* Tag.h */,
+				0E76089316117F36004BA65C /* Tag.m */,
+				0E76088C16117EC7004BA65C /* Photographer.h */,
+				0E76088D16117EC7004BA65C /* Photographer.m */,
+				0E76089816117F6A004BA65C /* Photo+Create.h */,
+				0E76089916117F6A004BA65C /* Photo+Create.m */,
+				0E76089B16117F84004BA65C /* Photographer+Create.h */,
+				0E76089C16117F84004BA65C /* Photographer+Create.m */,
+				0E76089E16117F90004BA65C /* Tag+Create.h */,
+				0E76089F16117F90004BA65C /* Tag+Create.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E760853161174CF004BA65C /* Vacation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E760872161174CF004BA65C /* Build configuration list for PBXNativeTarget "Vacation" */;
+			buildPhases = (
+				0E760850161174CF004BA65C /* Sources */,
+				0E760851161174CF004BA65C /* Frameworks */,
+				0E760852161174CF004BA65C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vacation;
+			productName = Vacation;
+			productReference = 0E760854161174CF004BA65C /* Vacation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E76084B161174CF004BA65C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Vacation;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Mo Erben";
+			};
+			buildConfigurationList = 0E76084E161174CF004BA65C /* Build configuration list for PBXProject "Vacation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0E760849161174CF004BA65C;
+			productRefGroup = 0E760855161174CF004BA65C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E760853161174CF004BA65C /* Vacation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E760852161174CF004BA65C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E760863161174CF004BA65C /* InfoPlist.strings in Resources */,
+				0E76086C161174CF004BA65C /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E760850161174CF004BA65C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E760865161174CF004BA65C /* main.m in Sources */,
+				0E760869161174CF004BA65C /* VacationAppDelegate.m in Sources */,
+				0E7608851611787A004BA65C /* Vacation.xcdatamodeld in Sources */,
+				0E76088E16117EC8004BA65C /* Photographer.m in Sources */,
+				0E76089416117F37004BA65C /* Tag.m in Sources */,
+				0E76089716117F37004BA65C /* Photo.m in Sources */,
+				0E76089A16117F6A004BA65C /* Photo+Create.m in Sources */,
+				0E76089D16117F84004BA65C /* Photographer+Create.m in Sources */,
+				0E7608A016117F90004BA65C /* Tag+Create.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0E760861161174CF004BA65C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E760862161174CF004BA65C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0E76086A161174CF004BA65C /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E76086B161174CF004BA65C /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E760870161174CF004BA65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0E760871161174CF004BA65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0E760873161174CF004BA65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Vacation/Vacation-Prefix.pch";
+				INFOPLIST_FILE = "Vacation/Vacation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0E760874161174CF004BA65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Vacation/Vacation-Prefix.pch";
+				INFOPLIST_FILE = "Vacation/Vacation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E76084E161174CF004BA65C /* Build configuration list for PBXProject "Vacation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E760870161174CF004BA65C /* Debug */,
+				0E760871161174CF004BA65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E760872161174CF004BA65C /* Build configuration list for PBXNativeTarget "Vacation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E760873161174CF004BA65C /* Debug */,
+				0E760874161174CF004BA65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0E7608831611787A004BA65C /* Vacation.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0E7608841611787A004BA65C /* Vacation.xcdatamodel */,
+			);
+			currentVersion = 0E7608841611787A004BA65C /* Vacation.xcdatamodel */;
+			path = Vacation.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 0E76084B161174CF004BA65C /* Project object */;
+}

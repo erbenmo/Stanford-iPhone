@@ -1,6 +1,6 @@
 //
-//  Tag.h
-//  Vacation
+//  Place.h
+//  FlickrFetcher
 //
 //  Created by Erben Mo on 25/9/12.
 //  Copyright (c) 2012 Mo Erben. All rights reserved.
@@ -11,13 +11,14 @@
 
 @class Photo;
 
-@interface Tag : NSManagedObject
+@interface Place : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSDate * date;
 @property (nonatomic, retain) NSSet *photos;
 @end
 
-@interface Tag (CoreDataGeneratedAccessors)
+@interface Place (CoreDataGeneratedAccessors)
 
 - (void)addPhotosObject:(Photo *)value;
 - (void)removePhotosObject:(Photo *)value;

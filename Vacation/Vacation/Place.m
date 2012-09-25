@@ -7,12 +7,15 @@
 //
 
 #import "Place.h"
+#import "Photo.h"
 #import "Vacation.h"
 
 
 @implementation Place
 
-@dynamic placeId;
+@dynamic name;
+@dynamic unique;
 @dynamic vacations;
+@dynamic photos;
 
 @end

@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Vacation;
+@class Photo, Vacation;
 
 @interface Place : NSManagedObject
 
-@property (nonatomic, retain) NSString * placeId;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) UNKNOWN_TYPE unique;
 @property (nonatomic, retain) NSSet *vacations;
+@property (nonatomic, retain) Photo *photos;
 @end
 
 @interface Place (CoreDataGeneratedAccessors)

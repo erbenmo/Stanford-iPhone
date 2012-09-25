@@ -1,5 +1,5 @@
 //
-//  VacationViewController.h
+//  VacationOptionsViewController.h
 //  Vacation
 //
 //  Created by Erben Mo on 25/9/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VacationViewController : UITableViewController
+@interface VacationOptionsViewController : UITableViewController
 
 @end

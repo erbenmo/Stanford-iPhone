@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FlickrFetcherPhotoWithZoomingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *visitButton;
 
 - (void) setPic:(NSDictionary*) pic;
-
 @end

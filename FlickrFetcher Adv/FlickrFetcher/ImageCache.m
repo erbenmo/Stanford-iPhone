@@ -92,7 +92,7 @@
     NSString* filePath = [self.path stringByAppendingPathComponent:fileName];
     
     unsigned long long int fs = [self folderSize];
-    NSLog(@"before: %lld", fs);
+    //NSLog(@"before: %lld", fs);
     if(fs > 1*1048576) {
         NSString* victimFile = [self earliestModifiedFile];
         NSString* victimPath = [self.path stringByAppendingPathComponent:victimFile];
@@ -102,7 +102,7 @@
     [self.manager createFileAtPath:filePath contents:data attributes:nil];
     
     fs = [self folderSize];
-    NSLog(@"after: %lld", fs);
+    //NSLog(@"after: %lld", fs);
 }
 
 -(NSData*) getPixelsFromCache:(NSDictionary *)image {

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11C74" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="m9e-aX-jWN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="m9e-aX-jWN">
     <dependencies>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
+        <!--Photographers Table View Controller-->
         <scene sceneID="PGg-Ir-MLl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xq9-6A-dGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -53,6 +54,7 @@
             </objects>
             <point key="canvasLocation" x="166" y="-354"/>
         </scene>
+        <!--Image View Controller-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -74,8 +76,9 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1067" y="-348"/>
+            <point key="canvasLocation" x="1067" y="-354"/>
         </scene>
+        <!--Photos By Photographer Table View Controller-->
         <scene sceneID="cp1-ff-Rmo">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kez-0e-fio" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -122,8 +125,9 @@
                     <navigationItem key="navigationItem" id="Fdg-I5-tJk"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="621" y="-348"/>
+            <point key="canvasLocation" x="617" y="-354"/>
         </scene>
+        <!--Navigation Controller-->
         <scene sceneID="BFX-9C-SRK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGA-OX-K8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,26 +143,9 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-318" y="-348"/>
+            <point key="canvasLocation" x="-318" y="-354"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="ImageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="PhotographersTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotographersTableViewController.h"/>
-        </class>
-        <class className="PhotosByPhotographerTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotosByPhotographerTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

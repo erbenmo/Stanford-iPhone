@@ -1,18 +1,18 @@
 //
-//  VacationViewController.m
+//  VacationOptionsViewController.m
 //  Vacation
 //
 //  Created by Erben Mo on 25/9/12.
 //  Copyright (c) 2012 Mo Erben. All rights reserved.
 //
 
-#import "VacationViewController.h"
+#import "VacationOptionsViewController.h"
 
-@interface VacationViewController ()
+@interface VacationOptionsViewController ()
 
 @end
 
-@implementation VacationViewController
+@implementation VacationOptionsViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

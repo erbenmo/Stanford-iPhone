@@ -1,18 +1,21 @@
 //
-//  Vacation.m
-//  Vacation
+//  Photo.m
+//  FlickrFetcher
 //
 //  Created by Erben Mo on 25/9/12.
 //  Copyright (c) 2012 Mo Erben. All rights reserved.
 //
 
-#import "Vacation.h"
+#import "Photo.h"
 #import "Place.h"
 
 
-@implementation Vacation
+@implementation Photo
 
 @dynamic unique;
-@dynamic places;
+@dynamic title;
+@dynamic url;
+@dynamic visited;
+@dynamic place;
 
 @end

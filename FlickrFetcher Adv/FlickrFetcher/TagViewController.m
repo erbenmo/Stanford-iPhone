@@ -1,29 +1,30 @@
 //
-//  VacationPlaceViewController.m
+//  TagViewController.m
 //  FlickrFetcher
 //
 //  Created by Erben Mo on 25/9/12.
 //  Copyright (c) 2012 Mo Erben. All rights reserved.
 //
 
-#import "VacationPlaceViewController.h"
-#import "Place.h"
-#import "PlacePhotoViewController.h"
+#import "TagViewController.h"
+#import "TagPhotoViewController.h"
+#import "VacationHelper.h"
+#import "Tag.h"
 
-@interface VacationPlaceViewController ()
-@property (nonatomic, strong) NSString* selectedPlace;
+@interface TagViewController ()
+@property (nonatomic, strong) NSString* selectedTag;
 @end
 
-@implementation VacationPlaceViewController
-@synthesize vacationName = _vacationName;
-@synthesize photoDatabase = _photoDatabase;
-@synthesize selectedPlace = _selectedPlace;
+@implementation TagViewController
+@synthesize  photoDatabase = _photoDatabase;
+@synthesize  vacationName = _vacationName;
+@synthesize selectedTag = _selectedTag;
 
 - (void)setupFetchedResultsController {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-    // no predicate because we want ALL the Places
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
     
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+        
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.photoDatabase.managedObjectContext
                                                                           sectionNameKeyPath:nil
@@ -37,31 +38,32 @@
     }
 }
 
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"placeCell";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"tagCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
-    Place* place = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = place.name;
+    
+    Tag* tag = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = tag.name;
     
     return cell;
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"toPhoto"]) {
-        PlacePhotoViewController* dest = (PlacePhotoViewController*) segue.destinationViewController;
-        dest.vacationName = self.vacationName;
-        dest.forPlace = self.selectedPlace;
-    }
-}
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Place* place = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.selectedPlace = place.name;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Tag* tag = (Tag*)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.selectedTag = tag.name;
     [self performSegueWithIdentifier:@"toPhoto" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([segue.identifier isEqualToString:@"toPhoto"]) {
+        TagPhotoViewController* dest = (TagPhotoViewController*)segue.destinationViewController;
+        dest.vacationName = self.vacationName;
+        dest.forTag = self.selectedTag;
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,11 +78,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
     [VacationHelper openVacation:self.vacationName usingBlock:^(UIManagedDocument* db) {
         self.photoDatabase = db;
-        NSLog(@"set database");
     }];
-    
     self.debug = YES;
 }
 

@@ -9,6 +9,7 @@
 #import "Photo+Create.h"
 #import "Place+Create.h"
 #import "FlickrFetcher.h"
+#import "Tag+Create.h"
 
 @implementation Photo (Create)
 
@@ -37,6 +38,16 @@
         photo.url = [[FlickrFetcher urlForPhoto:flickr format:FlickrPhotoFormatLarge] absoluteString];
         photo.place = [Place createPlaceWithFlickr:flickr inManagedObjectContext:context];
         photo.visited = [NSNumber numberWithBool:YES];
+        
+        NSString* tagString = [[flickr objectForKey:FLICKR_TAGS] copy];
+        NSArray *tags = [tagString componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+
+        for (NSString* aTagString in tags) {
+            if([aTagString rangeOfString:@":"].length == 0) {
+                Tag* tag = [Tag createTagWithFlickr:aTagString inManagedObjectContext:context];
+                [photo addTagsObject:tag];
+            }
+        }
     } else {
         photo = [matches lastObject];
     }

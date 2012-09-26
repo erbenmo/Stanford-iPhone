@@ -1,28 +1,28 @@
 //
-//  VacationPlaceViewController.m
+//  PlacePhotoViewController.m
 //  FlickrFetcher
 //
 //  Created by Erben Mo on 25/9/12.
 //  Copyright (c) 2012 Mo Erben. All rights reserved.
 //
 
-#import "VacationPlaceViewController.h"
-#import "Place.h"
 #import "PlacePhotoViewController.h"
+#import "VacationHelper.h"
+#import "Photo+Create.h"
 
-@interface VacationPlaceViewController ()
-@property (nonatomic, strong) NSString* selectedPlace;
+@interface PlacePhotoViewController ()
 @end
 
-@implementation VacationPlaceViewController
+@implementation PlacePhotoViewController
 @synthesize vacationName = _vacationName;
+@synthesize forPlace = _forPlace;
 @synthesize photoDatabase = _photoDatabase;
-@synthesize selectedPlace = _selectedPlace;
 
 - (void)setupFetchedResultsController {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Place"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
-    // no predicate because we want ALL the Places
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"place.name = %@", self.forPlace];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.photoDatabase.managedObjectContext
@@ -38,31 +38,19 @@
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"placeCell";
+    static NSString *CellIdentifier = @"photoCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-
-    Place* place = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = place.name;
+    
+    Photo* photo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = photo.title;
     
     return cell;
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"toPhoto"]) {
-        PlacePhotoViewController* dest = (PlacePhotoViewController*) segue.destinationViewController;
-        dest.vacationName = self.vacationName;
-        dest.forPlace = self.selectedPlace;
-    }
-}
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Place* place = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.selectedPlace = place.name;
-    [self performSegueWithIdentifier:@"toPhoto" sender:self];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -78,9 +66,7 @@
     [super viewDidLoad];
     [VacationHelper openVacation:self.vacationName usingBlock:^(UIManagedDocument* db) {
         self.photoDatabase = db;
-        NSLog(@"set database");
     }];
-    
     self.debug = YES;
 }
 

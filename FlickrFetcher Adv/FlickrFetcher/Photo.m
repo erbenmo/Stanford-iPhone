@@ -8,14 +8,16 @@
 
 #import "Photo.h"
 #import "Place.h"
+#import "Tag.h"
 
 
 @implementation Photo
 
-@dynamic unique;
 @dynamic title;
+@dynamic unique;
 @dynamic url;
 @dynamic visited;
 @dynamic place;
+@dynamic tags;
 
 @end

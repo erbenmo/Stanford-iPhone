@@ -11,6 +11,7 @@
 #import "ImageCache.h"
 #import "VacationToVisitViewController.h"
 #import "Photo+Create.h"
+#import "Photo+Delete.h"
 #import "VacationHelper.h"
 
 @interface FlickrFetcherPhotoWithZoomingViewController ()<UIScrollViewDelegate, VacationToVisitViewControllerDelegate>
@@ -41,11 +42,13 @@
 }
 
 - (IBAction)toggleVisitButton:(UIButton*)sender {
-    if([sender.titleLabel.text isEqualToString:@"visit"]) {
-        sender.titleLabel.text = @"unvisit";
+    if([self.visitButton.titleLabel.text isEqualToString:@"visit"]) {
         [self performSegueWithIdentifier:@"modalVacationOption" sender:self];
     } else {
-        sender.titleLabel.text = @"visit";
+        [self.visitButton setTitle:@"visit" forState:UIControlStateNormal];
+        [VacationHelper openVacation:self.vacationName usingBlock:^(UIManagedDocument* doc) {
+            [self deletePhotoFromDoc:doc];
+        }];
     }
 }
 
@@ -69,8 +72,50 @@
 }
 
 - (void) deletePhotoFromDoc:(UIManagedDocument*) doc {
-    
+    if (doc.documentState == UIDocumentStateNormal){
+        
+        //dispatch_queue_t fetchQ = dispatch_queue_create("save photo", NULL);
+        //dispatch_async(fetchQ, ^{
+        //Save photo to database
+        [doc.managedObjectContext performBlock:^{ // perform in the NSMOC's safe thread (main thread)
+            
+            [Photo deletePhotoWithFlickrInfo:self.pic inManagedObjectContext:doc.managedObjectContext];
+            
+            [doc saveToURL:doc.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
+            }];
+        }];
+        //dispatch_release(fetchQ);
+        //});
+    }
+
 }
+/*
+- (void)setInitialVisitStatus: (UIManagedDocument*) doc {
+    if (doc.documentState == UIDocumentStateNormal){
+        
+        //dispatch_queue_t fetchQ = dispatch_queue_create("save photo", NULL);
+        //dispatch_async(fetchQ, ^{
+        //Save photo to database
+        [doc.managedObjectContext performBlock:^{ // perform in the NSMOC's safe thread (main thread)
+            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Photo"];
+            request.predicate = [NSPredicate predicateWithFormat:@"unique = %@", [self.pic objectForKey:FLICKR_PHOTO_ID]];
+            NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
+            request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+            
+            NSArray *matches = [doc.managedObjectContext executeFetchRequest:request error:nil];
+            if([matches count] == 1) {
+                Photo* photo = [matches lastObject];
+                if([photo.visited intValue] == 1)
+                    [self.visitButton setTitle:@"unvisit" forState: UIControlStateNormal];
+                else
+                    [self.visitButton setTitle:@"visit" forState:UIControlStateNormal];
+            }
+        }];
+        //dispatch_release(fetchQ);
+        //});
+    }
+
+}*/
 
 - (void)chooseVacationToVisit:(VacationToVisitViewController *)sender choseOption:(NSString *)option {
     self.vacationName = option;
@@ -79,6 +124,9 @@
     }];
     
     [self dismissModalViewControllerAnimated:YES];
+    self.visitButton.titleLabel.text = @"unvisit";
+    [self.visitButton setTitle:@"unvisit" forState:UIControlStateNormal];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -116,6 +164,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.spinner];
     [self.spinner startAnimating];
     
+    
+
+    
     dispatch_queue_t downloadQ = dispatch_queue_create("download pic", NULL);
     dispatch_async(downloadQ, ^{
         
@@ -149,6 +200,7 @@
 {
     [self setScrollView:nil];
     [self setImageView:nil];
+    [self setVisitButton:nil];
     [self setVisitButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
